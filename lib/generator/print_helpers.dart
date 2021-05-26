@@ -127,7 +127,7 @@ Spec classDefinitionToSpec(
   return Class(
     (b) => b
       ..annotations
-          .add(CodeExpression(Code('JsonSerializable(explicitToJson: true)')))
+          .add(CodeExpression(Code('JsonSerializable(explicitToJson: true, includeIfNull: false)')))
       ..name = definition.name.namePrintable
       ..mixins.add(refer('EquatableMixin'))
       ..mixins.addAll(definition.mixins.map((i) => refer(i.namePrintable)))
@@ -199,7 +199,7 @@ Spec generateArgumentClassSpec(QueryDefinition definition) {
   return Class(
     (b) => b
       ..annotations
-          .add(CodeExpression(Code('JsonSerializable(explicitToJson: true)')))
+          .add(CodeExpression(Code('JsonSerializable(explicitToJson: true, includeIfNull: false)')))
       ..name = '${definition.className}Arguments'
       ..extend = refer('JsonSerializable')
       ..mixins.add(refer('EquatableMixin'))
